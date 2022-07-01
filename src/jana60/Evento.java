@@ -132,6 +132,6 @@ public class Evento {
 		@Override
 		public String toString() {
 			
-			return "Evento del : " + dataFormattata()+ " - " + titolo ;
+			return "Evento del : " + dataFormattata()+ " - \nTitolo: " + titolo ;
 		}
 	}

@@ -37,7 +37,7 @@ public class Conferenza extends Evento {
 	}
 	@Override
 	public String toString() {
-		return super.toString() + oratore.oratore() + ", ha discusso di " + argomento + ", un bell'applauso";
+		return super.toString() + "\n" + oratore.oratore() + ", ha discusso di " + argomento + ", un bell'applauso.";
 	}
 
 }
