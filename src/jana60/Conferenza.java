@@ -19,10 +19,20 @@ public class Conferenza extends Evento {
 	//attributi della classe conferenza
 	private String argomento;
 	private Oratore oratore;
-	public Conferenza(String titolo, LocalDate data, int postiTotali)
+	
+	
+	//costruttori ereditati dalla classe evento più i propri
+	public Conferenza(String titolo, LocalDate data, int postiTotali, String argomento, Oratore oratore)
 			throws NullPointerException, NumberFormatException, IllegalArgumentException {
 		super(titolo, data, postiTotali);
-		
+		this.argomento = argomento;
+		this.oratore = oratore;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return super.toString() + Oratore.oratore() + ", ha discusso di " + argomento + ", un bell'applauso";
 	}
 
 }
