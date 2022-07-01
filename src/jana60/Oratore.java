@@ -15,46 +15,38 @@ public class Oratore {
  le informazioni sull’oratore e sull’argomento.*/
 	
 	//attributi classe Oratore
-	private static String nome;
-	private static String cognome;
+	private String nome;
+	private String cognome;
 	private String titolo;
 
 	public Oratore(String nome, String cognome, String titolo) {
 		super();
+		notnull(nome, cognome, titolo);
 		this.nome = nome;
 		this.cognome = cognome;
-		this.titolo = titolo;
-		
-		
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCognome() {
-		return cognome;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-
-	public String getTitolo() {
-		return titolo;
-	}
-
-	public void setTitolo(String titolo) {
-		this.titolo = titolo;
+		this.titolo = titolo;	
 	}
 	
-	
-	public static String oratore() {
+	//metodi not null per oratore
+	private void notnull(String nome, String cognome, String titolo) throws NullPointerException{
+		if (nome == null || nome.isBlank()) {
+			throw new NullPointerException("L'oratore ha un nome!");	
+	  }if (cognome == null || cognome.isBlank()) {
+		throw new NullPointerException("L'oratore ha un cognome!");	
+	  }	if (titolo == null || titolo.isBlank()) {
+		throw new NullPointerException("L'oratore ha un titolo!");	
+	  }	
+	}
 		
-		return "L'oratore " + nome + " " + cognome;
+		
+	
+		
+	
+	
+	
+	
+	public String oratore() {
+		
+		return "L'oratore " + nome + " " + cognome + ", di titolo " + titolo;
 	}
 }

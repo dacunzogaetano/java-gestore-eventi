@@ -29,18 +29,7 @@ public class Main {
 		
 		Evento newEvento = null;
 		do {
-			try {System.out.println("L'evento a cui vuoi assistere è una conferenza?/nRispondere con un si o con un no");
-				String risposta = scan.nextLine();
-				switch(risposta) {
-				case "si":
-				System.out.println("Qual é il nome dell' l'oratore?");
-				String nomeOratore = scan.nextLine(); 
-				System.out.println("Qual é il cognome dell' l'oratore?");
-				String cognomeOratore = scan.nextLine();
-				System.out.println("Qual é il titolo dell' l'oratore?");
-				String titoloOratore = scan.nextLine();
-				System.out.println("Qual è l'argomento?");
-				String argomento = scan.nextLine(); 
+			try {
 				System.out.print("Inserisci il titolo dell'evento: ");
 				String titolo = scan.nextLine();
 				//chiedo all'utente giorno,mese ed anno separatamente
@@ -57,12 +46,6 @@ public class Main {
 				} catch (Exception e) {
 					System.out.println ("giorno o mese non valido");
 				}
-				//creo la nuova conferenza
-				Oratore newOratore = new Oratore(nomeOratore,cognomeOratore, titoloOratore);
-				Conferenza newConferenza = new Conferenza(titolo, data, postiDisponibili, argomento, newOratore);
-				
-				
-				
 				// creo il nuovo evento
 				newEvento = new Evento(titolo, data, postiDisponibili);
 				errore = false;
@@ -110,18 +93,18 @@ public class Main {
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
-				System.out.println("Hai prenotato " + newEvento.getPostiPrenotati() + " posto/i e sono rimasti "
+				System.out.println("Hai prenotato " + newEvento.getPostiPrenotati() + " posti e sono rimasti "
 						+ newEvento.postiDisponibili() + " posti disponibili");
 				break;
 			default:
-				System.out.println("Ciao, alla prossima");
+				System.out.println("Ciao.");
 				restare = false;
 				break;
 				
 			}
 		} while (restare);
 
-		System.out.println(newEvento.toString() + "\n" + "Posti prenotati: " + newEvento.getPostiPrenotati() + "\n"
+		System.out.println(newEvento + "\n" + "Posti prenotati: " + newEvento.getPostiPrenotati() + "\n"
 				+ "Posti disponibili: " + newEvento.postiDisponibili());
 
 		scan.close();

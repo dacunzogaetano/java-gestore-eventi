@@ -25,14 +25,19 @@ public class Conferenza extends Evento {
 	public Conferenza(String titolo, LocalDate data, int postiTotali, String argomento, Oratore oratore)
 			throws NullPointerException, NumberFormatException, IllegalArgumentException {
 		super(titolo, data, postiTotali);
+		notnull(argomento);
 		this.argomento = argomento;
 		this.oratore = oratore;
 	}
 	
-	
+	private void notnull(String argomento) throws NullPointerException{
+		if (argomento == null || argomento.isBlank()) {
+			throw new NullPointerException("L'argomento non può essere vuoto!");	
+		}
+	}
 	@Override
 	public String toString() {
-		return super.toString() + Oratore.oratore() + ", ha discusso di " + argomento + ", un bell'applauso";
+		return super.toString() + oratore.oratore() + ", ha discusso di " + argomento + ", un bell'applauso";
 	}
 
 }
