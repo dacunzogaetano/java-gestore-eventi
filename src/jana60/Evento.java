@@ -38,7 +38,7 @@ public class Evento {
 	
 	//costruttori con i valori gia inizializzati
 	
-	public Evento (String titolo, LocalDate data, int postiTotali, int postiPrenotati) throws NullPointerException, NumberFormatException {
+	public Evento (String titolo, LocalDate data, int postiTotali) throws NullPointerException, NumberFormatException, IllegalArgumentException {
 		
 		validaTitolo(titolo);
 		validaData(data);
@@ -79,7 +79,7 @@ public class Evento {
 	
 	//metodi private per validare i dati
 	private void validaTitolo(String titolo) throws NullPointerException {
-	    if (titolo == null) {
+	    if (titolo == null || titolo.isBlank()) {
 	      throw new NullPointerException("Il titolo non può essere vuoto");
 	    }
 	  }
@@ -99,9 +99,7 @@ public class Evento {
 	
 	//metodi public per l'utente se vuole prenotare o disdire
 	public void prenotareTicket () throws Exception {
-		if (data.isBefore(LocalDate.now())) {
-		      throw new IllegalArgumentException("La data non può essere nel passato");
-		    }		
+		validaData(data);
 		if (postiPrenotati == postiTotali) {
 			throw new Exception ("Non c'é nemmeno un posto disponibile");
 		} else {
@@ -110,9 +108,7 @@ public class Evento {
 	}
 	
 	public void disdireTicket () throws Exception {
-		if (data.isBefore(LocalDate.now())) {
-		      throw new IllegalArgumentException("La data non può essere nel passato");
-		    }		
+		validaData(data);
 		if (postiPrenotati == 0) {
 			throw new Exception ("Non ci sono biglietti venduti");
 		} else {
