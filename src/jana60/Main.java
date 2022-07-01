@@ -104,8 +104,8 @@ public class Main {
 			}
 		} while (restare);
 
-		System.out.println(newEvento + "\n" + "Posti prenotati: " + newEvento.getPostiPrenotati() + "\n"
-				+ "Posti disponibili: " + newEvento.postiDisponibili() + "\n" + "Grazie e arrivederci!");
+		System.out.println(newEvento.toString() + "\n" + "Posti prenotati: " + newEvento.getPostiPrenotati() + "\n"
+				+ "Posti disponibili: " + newEvento.postiDisponibili());
 
 		scan.close();
 	}
