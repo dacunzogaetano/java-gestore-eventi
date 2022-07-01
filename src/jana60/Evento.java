@@ -97,31 +97,41 @@ public class Evento {
 		}
 	}
 	
+	
 	//metodi public per l'utente se vuole prenotare o disdire
-	public void prenotareTicket () throws Exception {
-		validaData(data);
-		if (postiPrenotati == postiTotali) {
-			throw new Exception ("Non c'é nemmeno un posto disponibile");
-		} else {
-			postiPrenotati++;
+	
+	// metodi
+		public int postiDisponibili() {
+			return postiTotali - postiPrenotati;
+		}
+
+		public int prenota() throws IllegalArgumentException, Exception {
+			validaData(data);
+			if (postiDisponibili() == 0) {
+				throw new Exception("Non ci sono più posti disponibili");
+			} else {
+				return postiPrenotati++;
+			}
+		}
+
+
+
+		public int disdici() throws IllegalArgumentException, Exception {
+			validaData(data);
+			if (postiPrenotati == 0) {
+				throw new Exception("Non ci sono prenotazioni da disdire");
+			} else {
+				return postiPrenotati--;
+			}
+		}
+
+
+		private String dataFormattata() {
+			return formatter.format(data);
+		}
+		@Override
+		public String toString() {
+			
+			return "Evento del : " + dataFormattata()+ " - " + titolo ;
 		}
 	}
-	
-	public void disdireTicket () throws Exception {
-		validaData(data);
-		if (postiPrenotati == 0) {
-			throw new Exception ("Non ci sono biglietti venduti");
-		} else {
-			postiPrenotati--;
-		}
-	}
-	
-	private String dataFormattata() {
-		return formatter.format(data);
-	}
-	@Override
-	public String toString() {
-		
-		return "Evento del : " + dataFormattata()+ " - " + titolo ;
-	}
-}
